@@ -15,7 +15,6 @@ That's great news! You've come to the right place. With the Rosie
 Companion App, we'll get right to learning the language and have you 
 speaking Spanish in no time. \n\n`;
 
-### Human: [CW: Does anything else go here?]
 
 ###ENDSEEDCHAT###
 

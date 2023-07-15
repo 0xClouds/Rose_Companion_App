@@ -13,6 +13,7 @@ export default function Examples() {
     title: "",
     imageUrl: "",
   });
+
   const [examples, setExamples] = useState([
     {
       name: "",
