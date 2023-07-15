@@ -3,6 +3,7 @@
 import { Fragment, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useCompletion } from "ai/react";
+import AudioPlayer from "./AudioPlayer";
 
 var last_name = "";
 
@@ -127,8 +128,8 @@ export default function QAModal({
                       </p>
                     )}
                   </div>
-
-                  {/* <div>Hello you could put audio here</div> */}
+                  <div>{completion}</div>
+                  <AudioPlayer inputText={completion} />
                 </div>
               </Dialog.Panel>
             </Transition.Child>

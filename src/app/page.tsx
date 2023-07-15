@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Examples from "@/components/Examples";
+import AudioPlayer from "@/components/AudioPlayer";
 
 export default function Home() {
   return (
