@@ -5,8 +5,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useCompletion } from "ai/react";
 import AudioPlayer from "./AudioPlayer";
 
-var last_name = "";
-
 export default function QAModal({
   open,
   setOpen,
@@ -117,7 +115,7 @@ export default function QAModal({
                             cy="12"
                             r="10"
                             stroke="currentColor"
-                            stroke-width="4"
+                            strokeWidth="4"
                           ></circle>
                           <path
                             className="opacity-75"

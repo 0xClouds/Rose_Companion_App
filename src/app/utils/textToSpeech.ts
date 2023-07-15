@@ -5,7 +5,7 @@ const textToSpeech = async (inputText: string): Promise<ArrayBuffer> => {
   // Set the API key for ElevenLabs API.
   // Do not use directly. Use environment variables.
 
-  const API_KEY = "aa9fd9d651667d5eeb8caa3bdb9ee6c6"; //process.env.ELEVEN_LABS_API_KEY;
+  const API_KEY = "5979fe824c64d42b787bc19a0df09951"; // process.env.ELEVENLABS_API_KEY;
   // Set the ID of the voice to be used.
   const VOICE_ID = "EXAVITQu4vr4xnSDxMaL";
 

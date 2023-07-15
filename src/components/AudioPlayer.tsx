@@ -30,7 +30,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ inputText }) => {
 
 */
 
-  const handleAudioFetch = useCallback(async () => {
+  const handleAudioFetch = async () => {
     // Call the textToSpeech function to generate the audio data for the input text
     const data = await textToSpeech(inputText);
     // Create a new Blob object from the audio data with MIME type 'audio/mpeg'
@@ -39,12 +39,16 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ inputText }) => {
     const url = URL.createObjectURL(blob);
 
     // Set the audio URL state variable to the newly created URL
+    console.log(url);
     setAudioURL(url);
-  }, [inputText]); // inputText is a dependency of handleAudioFetch
+  }; // inputText is a dependency of handleAudioFetch
 
   useEffect(() => {
+    console.log("I was called");
+    console.log(inputText);
+    console.log(audioURL);
     handleAudioFetch();
-  }, [handleAudioFetch]); // handleAudioFetch is a dependency of the effect
+  }, [inputText]); // handleAudioFetch is a dependency of the effect
 
   // Render an audio element with the URL if it is not null
   return (
