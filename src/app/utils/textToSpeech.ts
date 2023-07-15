@@ -1,18 +1,19 @@
 import axios, { Method } from "axios";
+require("dotenv").config();
 
 // Define a function called textToSpeech that takes in a string called inputText as its argument.
 const textToSpeech = async (inputText: string): Promise<ArrayBuffer> => {
   // Set the API key for ElevenLabs API.
   // Do not use directly. Use environment variables.
 
-  const API_KEY = "5979fe824c64d42b787bc19a0df09951"; // process.env.ELEVENLABS_API_KEY;
+  const API_KEY = process.env.NEXT_PUBLIC_ELEVENLABS_API_KEY;
   // Set the ID of the voice to be used.
   const VOICE_ID = "EXAVITQu4vr4xnSDxMaL";
 
   // Set options for the API request.
   const options = {
     method: "post" as Method,
-    url: `https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}`,
+    url: `https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}/stream`,
     headers: {
       accept: "audio/mpeg", // Set the expected response type to audio/mpeg.
       "content-type": "application/json", // Set the content type to application/json.
