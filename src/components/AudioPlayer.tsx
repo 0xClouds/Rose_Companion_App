@@ -30,6 +30,9 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ inputText }) => {
 
   const handleAudioFetch = useCallback(
     debounce(async () => {
+      if (inputText === "") {
+        return;
+      }
       setAudioURL(null);
       // Call the textToSpeech function to generate the audio data for the input text
       const data = await textToSpeech(inputText);
@@ -51,9 +54,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ inputText }) => {
   ); // inputText is a dependency of handleAudioFetch
 
   useEffect(() => {
-    console.log("I was called");
-    console.log(inputText);
-    console.log(audioURL);
     handleAudioFetch();
   }, [handleAudioFetch]); // handleAudioFetch is a dependency of the effect
 
