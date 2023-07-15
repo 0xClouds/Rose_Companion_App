@@ -126,9 +126,9 @@ export default function QAModal({
                       </p>
                     )}
                   </div>
-                  <div>{completion}</div>
-                  <AudioPlayer inputText={completion} />
                 </div>
+                <div>{completion}</div>
+                <AudioPlayer inputText={completion} />
               </Dialog.Panel>
             </Transition.Child>
           </div>

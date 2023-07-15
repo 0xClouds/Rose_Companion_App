@@ -1,5 +1,4 @@
 import axios, { Method } from "axios";
-require("dotenv").config();
 
 // Define a function called textToSpeech that takes in a string called inputText as its argument.
 const textToSpeech = async (inputText: string): Promise<ArrayBuffer> => {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import textToSpeech from "../app/utils/textToSpeech";
+import { debounce } from "lodash";
 interface AudioPlayerProps {
   inputText: string;
 }
@@ -18,37 +19,43 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ inputText }) => {
     const blob = new Blob([data], { type: "audio/mpeg" });
     // Create a URL for the blob object
     const url = URL.createObjectURL(blob);
-
     // Set the audio URL state variable to the newly created URL
     setAudioURL(url);
   };
-
   // Use the useEffect hook to call the handleAudioFetch function once when the component mounts
   useEffect(() => {
     handleAudioFetch();
   }, [handleAudioFetch, inputText]); // Add inputText to the dependency array to re-run the effect when inputText changes
-
 */
 
-  const handleAudioFetch = async () => {
-    // Call the textToSpeech function to generate the audio data for the input text
-    const data = await textToSpeech(inputText);
-    // Create a new Blob object from the audio data with MIME type 'audio/mpeg'
-    const blob = new Blob([data], { type: "audio/mpeg" });
-    // Create a URL for the blob object
-    const url = URL.createObjectURL(blob);
+  const handleAudioFetch = useCallback(
+    debounce(async () => {
+      setAudioURL(null);
+      // Call the textToSpeech function to generate the audio data for the input text
+      const data = await textToSpeech(inputText);
+      // Create a new Blob object from the audio data with MIME type 'audio/mpeg'
+      const blob = new Blob([data], { type: "audio/mpeg" });
+      // Create a URL for the blob object
+      console.log("Im in here");
+      // if (audioURL) {
+      //   console.log("Im revoking");
+      //   URL.revokeObjectURL(audioURL);
+      // }
+      const url = URL.createObjectURL(blob);
 
-    // Set the audio URL state variable to the newly created URL
-    console.log(url);
-    setAudioURL(url);
-  }; // inputText is a dependency of handleAudioFetch
+      // Set the audio URL state variable to the newly created URL
+      console.log(url);
+      setAudioURL(url);
+    }, 500),
+    [inputText]
+  ); // inputText is a dependency of handleAudioFetch
 
   useEffect(() => {
     console.log("I was called");
     console.log(inputText);
     console.log(audioURL);
     handleAudioFetch();
-  }, [inputText]); // handleAudioFetch is a dependency of the effect
+  }, [handleAudioFetch]); // handleAudioFetch is a dependency of the effect
 
   // Render an audio element with the URL if it is not null
   return (
