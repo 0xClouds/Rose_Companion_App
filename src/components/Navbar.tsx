@@ -2,10 +2,11 @@ import { UserButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import RosieLogo from "../../public/rosie_ai.png";
 const navigation = [
   {
     name: "About",
-    href: "https://github.com/a16z-infra/companion-app",
+    href: "https://github.com/0xClouds/Rose_Companion_App",
     current: false,
   },
 ];
@@ -27,16 +28,16 @@ export default function Navbar() {
                 height={0}
                 sizes="100vw"
                 className="block h-8 w-auto lg:hidden rounded-lg"
-                src="https://avatars.githubusercontent.com/u/745163?s=200&v=4"
-                alt="a16z"
+                src={RosieLogo}
+                alt="the Rosie Logo"
               />
               <Image
                 width={0}
                 height={0}
                 sizes="100vw"
                 className="hidden h-8 w-auto lg:block rounded-lg"
-                src="https://avatars.githubusercontent.com/u/745163?s=200&v=4"
-                alt="a16z"
+                src={RosieLogo}
+                alt="The Rosie Logo"
               />
             </div>
             <div className="ml-6">

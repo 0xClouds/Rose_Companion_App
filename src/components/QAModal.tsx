@@ -79,7 +79,12 @@ export default function QAModal({
                   <form onSubmit={handleSubmit}>
                     <input
                       placeholder="How's your day?"
-                      className={"w-full flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 shadow-sm focus:outline-none sm:text-sm sm:leading-6 " + (isLoading && !completion ? "text-gray-600 cursor-not-allowed" : "text-white")}                      
+                      className={
+                        "w-full flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 shadow-sm focus:outline-none sm:text-sm sm:leading-6 " +
+                        (isLoading && !completion
+                          ? "text-gray-600 cursor-not-allowed"
+                          : "text-white")
+                      }
                       value={input}
                       onChange={handleInputChange}
                       disabled={isLoading && !completion}
@@ -122,6 +127,8 @@ export default function QAModal({
                       </p>
                     )}
                   </div>
+
+                  {/* <div>Hello you could put audio here</div> */}
                 </div>
               </Dialog.Panel>
             </Transition.Child>
