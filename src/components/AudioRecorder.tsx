@@ -6,7 +6,7 @@ import "./AudioRecorder.css";
 export interface AudioRecorderProps {
     appState: AppState,
     setDialog: Dispatch<SetStateAction<string>>,
-    formReference: MutableRefObject<HTMLFormElement> 
+    formReference: MutableRefObject<HTMLFormElement | undefined> 
 }
 
 export default function AudioRecorder({appState, setDialog, formReference}: AudioRecorderProps) {
@@ -17,13 +17,14 @@ export default function AudioRecorder({appState, setDialog, formReference}: Audi
     browserSupportsSpeechRecognition
   } = useSpeechRecognition();
 
-  if (!browserSupportsSpeechRecognition) {
+  if (!browserSupportsSpeechRecognition) 
     return <span>Browser doesn't support speech recognition.</span>;
-  }
+  
 
   const submit = () => {
     setDialog(transcript);
-    formReference.current && formReference.current.submit();
+    if (formReference.current)  
+      formReference.current.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
 
     SpeechRecognition.stopListening();
     resetTranscript();
@@ -34,16 +35,12 @@ export default function AudioRecorder({appState, setDialog, formReference}: Audi
   }, []); 
 
   return (
-    <div>
-      <div className="microphone" >
-        <span className={ listening ? "on" : "off" } />
-      </div>
-      { 
-        listening ?  
+    <div className="container">
+      { listening ?  
           <span className="microphone-on" /> :
           <span className="microphone-off" /> 
       }
-      <button onClick={submit}>Submit</button>
+      <button className="button" onClick={submit}>Submit</button>
       <button onClick={SpeechRecognition.startListening}>Start</button>
       <p>{transcript}</p>
     </div>
