@@ -15,10 +15,6 @@ That's great news! You've come to the right place. With the Rosie
 Companion App, we'll get right to learning the language and have you 
 speaking Spanish in no time. \n\n`;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 94b299411a8d3755c306d519446776d954410cc8
 ###ENDSEEDCHAT###
 
 Having grown up in sunny San Diego, California, Rosie started speaking Spanish from a

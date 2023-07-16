@@ -16,6 +16,10 @@ export default function Avatar({ inputText }: AvatarProps) {
     script: {
       type: "text",
       input: `${inputText}`,
+      provider: {
+        type: "elevenlabs",
+        voice_id: "EXAVITQu4vr4xnSDxMaL",
+      },
     },
   };
 
@@ -93,13 +97,19 @@ export default function Avatar({ inputText }: AvatarProps) {
 
   return (
     <div>
-      {videoUrl === "" ? (
-        <div className="text-white">Your Avatar is processing your text!</div>
-      ) : (
-        <video key={videoUrl} width="320" height="240" controls>
-          <source src={videoUrl} type="video/mp4"></source>
-          Your browser does not support the video tag.
-        </video>
+      {videoUrl && (
+        <div className="rounded-full overflow-hidden flex justify-center items-center">
+          <video
+            className="rounded-full"
+            key={videoUrl}
+            width="320"
+            height="240"
+            autoPlay
+          >
+            <source src={videoUrl} type="video/mp4"></source>
+            Your browser does not support the video tag.
+          </video>
+        </div>
       )}
     </div>
   );

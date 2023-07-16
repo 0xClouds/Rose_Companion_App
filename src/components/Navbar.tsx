@@ -3,6 +3,8 @@ import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import RosieLogo from "../../public/rosie_ai.png";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+
 const navigation = [
   {
     name: "About",
@@ -57,7 +59,7 @@ export default function Navbar() {
                     {item.name}
                   </a>
                 ))}
-                <div className="px-3 py-2 text-gray-300">
+                {/* <div className="px-3 py-2 text-gray-300">
                   <iframe
                     src="https://ghbtns.com/github-btn.html?user=a16z-infra&repo=companion-app&type=star&count=true"
                     frameBorder="0"
@@ -66,7 +68,7 @@ export default function Navbar() {
                     height="20"
                     title="GitHub"
                   ></iframe>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
