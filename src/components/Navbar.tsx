@@ -3,7 +3,6 @@ import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import RosieLogo from "../../public/rosie_ai.png";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const navigation = [
   {
