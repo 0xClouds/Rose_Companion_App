@@ -8,7 +8,7 @@ import { currentUser } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { rateLimit } from "@/app/utils/rateLimit";
 
-dotenv.config({ path: `.env.local` });
+dotenv.config({ path: `.env` });
 
 export async function POST(request: Request) {
   const { prompt, isText, userId, userName } = await request.json();
