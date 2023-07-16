@@ -1,9 +1,11 @@
 .container {
   padding: 1em;  
+  vertical-align: middle;
 }
 
 .button {
   padding-left: 1em;
+  color: white;
 }
 
 .microphone-on {

@@ -4,7 +4,7 @@ import { AppState } from './QAModal';
 import "./AudioRecorder.css";
 
 export interface AudioRecorderProps {
-    appState: AppState,
+    // appState: AppState,
     setDialog: Dispatch<SetStateAction<string>>,
     formReference: MutableRefObject<HTMLFormElement | undefined> 
 }
@@ -50,7 +50,7 @@ export interface AudioRecorderProps {
 
 import { useWhisper } from '@chengsokdara/use-whisper'
 
-function AudioRecorder({appState, setDialog, formReference}: AudioRecorderProps) {
+function AudioRecorder({setDialog, formReference}: AudioRecorderProps) {
   let {
     recording,
     speaking,
@@ -62,16 +62,17 @@ function AudioRecorder({appState, setDialog, formReference}: AudioRecorderProps)
   } = useWhisper({
     apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY, // YOUR_OPEN_AI_TOKEN
     autoStart: true,
+    streaming: true
   });
 
   function submit() {
+    stopRecording();
+
     if(transcript.text)
         setDialog(transcript.text);
-
     if (formReference.current)  
       formReference.current.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
 
-    stopRecording();
     transcript = { 
       blob: undefined,
       text: undefined 
@@ -85,7 +86,7 @@ function AudioRecorder({appState, setDialog, formReference}: AudioRecorderProps)
           <span className="microphone-off" /> 
       }
       <button className="button" onClick={submit}>Submit</button>
-      <button onClick={startRecording}>Start</button>
+      <button className="button" onClick={startRecording}>Record</button>
       <p>{transcript.text}</p>
     </div>
   );
