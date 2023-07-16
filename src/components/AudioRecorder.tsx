@@ -87,22 +87,8 @@ function AudioRecorder({setDialog, formReference}: AudioRecorderProps) {
       }
       <button className="button" onClick={submit}>Submit</button>
       <button className="button" onClick={startRecording}>Record</button>
-      <p>{transcript.text}</p>
     </div>
   );
-
-
-  // return (
-  //   <div>
-  //     <p>Recording: {recording ? "true" : "false" }</p>
-  //     <p>Speaking: {speaking ? "true" : "false" }</p>
-  //     <p>Transcribing: { transcribing ? "true" : "false" }</p>
-  //     <p>Transcribed Text: { transcript ? transcript.text : "" }</p>
-  //     <button onClick={startRecording}>Start</button>
-  //     <button onClick={pauseRecording}>Pause</button>
-  //     <button onClick={stopRecording}>Stop</button>
-  //   </div>
-  // );
 }
 
 export default AudioRecorder;
