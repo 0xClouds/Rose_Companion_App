@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import QAModal from "./QAModal";
 import Image from "next/image";
+import RoseImage from "../../public/rosie_ai.png";
 import { Tooltip } from "react-tooltip";
 
 import { getCompanions } from "./actions";
@@ -72,7 +73,7 @@ export default function Examples() {
                 height={0}
                 sizes="100vw"
                 className="mx-auto h-32 w-32 flex-shrink-0 rounded-full"
-                src={example.imageUrl}
+                src={RoseImage}
                 alt=""
               />
               <h3 className="mt-6 text-sm font-medium text-white">
