@@ -1,13 +1,22 @@
-import React, { Dispatch, Fragment, MutableRefObject, SetStateAction } from 'react';
-import { useWhisper } from '@chengsokdara/use-whisper'
+"use client";
+import React, {
+  Dispatch,
+  Fragment,
+  MutableRefObject,
+  SetStateAction,
+} from "react";
+import { useWhisper } from "@chengsokdara/use-whisper";
 import "./AudioRecorder.css";
 
 export interface AudioRecorderProps {
-    setDialog: Dispatch<SetStateAction<string>>,
-    formReference: MutableRefObject<HTMLFormElement | undefined> 
+  setDialog: Dispatch<SetStateAction<string>>;
+  formReference: MutableRefObject<HTMLFormElement | undefined>;
 }
 
-export default function AudioRecorder({setDialog, formReference}: AudioRecorderProps) {
+export default function AudioRecorder({
+  setDialog,
+  formReference,
+}: AudioRecorderProps) {
   let {
     recording,
     speaking,
@@ -19,35 +28,41 @@ export default function AudioRecorder({setDialog, formReference}: AudioRecorderP
   } = useWhisper({
     apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY, // YOUR_OPEN_AI_TOKEN
     autoStart: true,
-    streaming: true
+    streaming: true,
   });
 
   function submit() {
     stopRecording();
 
-    if(transcript.text)
-        setDialog(transcript.text);
-    if (formReference.current)  
-      formReference.current.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+    if (transcript.text) setDialog(transcript.text);
+    if (formReference.current)
+      formReference.current.dispatchEvent(
+        new Event("submit", { cancelable: true, bubbles: true })
+      );
 
-    // transcript = { 
+    // transcript = {
     //   blob: undefined,
-    //   text: undefined 
+    //   text: undefined
     // };
-  };
+  }
 
   return (
     <div className="container">
-      { recording ?  
+      {recording ? (
         <Fragment>
-          <span className="microphone-on" /> 
-          <button className="button" onClick={submit}>Submit</button>
-        </Fragment> :
+          <span className="microphone-on" />
+          <button className="button" onClick={submit}>
+            Submit
+          </button>
+        </Fragment>
+      ) : (
         <Fragment>
-          <span className="microphone-off" /> 
-          <button className="button" onClick={startRecording}>Record</button>
-        </Fragment> 
-      }
+          <span className="microphone-off" />
+          <button className="button" onClick={startRecording}>
+            Record
+          </button>
+        </Fragment>
+      )}
     </div>
   );
 }

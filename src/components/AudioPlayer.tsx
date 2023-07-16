@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useCallback } from "react";
 import textToSpeech from "../app/utils/textToSpeech";
 import { debounce } from "lodash";
