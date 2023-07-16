@@ -1,0 +1,25 @@
+.container {
+  padding: 1em;  
+  vertical-align: middle;
+}
+
+.button {
+  padding-left: 1em;
+  color: white;
+}
+
+.microphone-on {
+  height: 12.5px;
+  width: 12.5px;
+  background-color: #00ff00;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.microphone-off {
+  height: 12.5px;
+  width: 12.5px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  display: inline-block;
+}
