@@ -89,6 +89,7 @@ export default function QAModal({
                   formReference={formReference}
                 />
                 <div>
+                  {/* @ts-ignore */}
                   <form ref={formReference} onSubmit={handleSubmit}>
                     <input
                       placeholder="How's your day?"
