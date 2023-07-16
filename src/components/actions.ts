@@ -5,7 +5,16 @@ import dotenv from "dotenv";
 import { parse } from "path";
 
 export async function getCompanions() {
-  const COMPFILE = "../../companions/companions.json";
+  const COMPFILE = [
+    {
+      name: "Rosie",
+      title: "San Diego native, and fluent in spanish. I am your AI tutor",
+      imageUrl: "/rosie_ai.png",
+      llm: "chatgpt",
+      phone: "OPTIONAL_COMPANION_PHONE_NUMBER",
+    },
+  ];
+
   var companions = [];
   console.log("Loading companion descriptions from " + COMPFILE);
   var fs = require("fs");
