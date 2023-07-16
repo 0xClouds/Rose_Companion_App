@@ -1,4 +1,4 @@
-import React, { Dispatch, MutableRefObject, SetStateAction } from 'react';
+import React, { Dispatch, Fragment, MutableRefObject, SetStateAction } from 'react';
 import { useWhisper } from '@chengsokdara/use-whisper'
 import "./AudioRecorder.css";
 
@@ -39,11 +39,15 @@ export default function AudioRecorder({setDialog, formReference}: AudioRecorderP
   return (
     <div className="container">
       { recording ?  
-          <span className="microphone-on" /> :
+        <Fragment>
+          <span className="microphone-on" /> 
+          <button className="button" onClick={submit}>Submit</button>
+        </Fragment> :
+        <Fragment>
           <span className="microphone-off" /> 
+          <button className="button" onClick={startRecording}>Record</button>
+        </Fragment> 
       }
-      <button className="button" onClick={submit}>Submit</button>
-      <button className="button" onClick={startRecording}>Record</button>
     </div>
   );
 }
