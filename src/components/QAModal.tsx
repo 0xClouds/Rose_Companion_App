@@ -1,10 +1,19 @@
 "use client";
 
-import { Fragment, useEffect } from "react";
+import { Fragment, createRef, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useCompletion } from "ai/react";
 import AudioPlayer from "./AudioPlayer";
+<<<<<<< HEAD
 import Avatar from "./Avatar";
+=======
+import AudioRecorder from "./AudioRecorder";
+
+export enum AppState {
+    Listening,
+    Speaking,
+}
+>>>>>>> cc68245e31f828341835cc915dd9d6c6e5584d08
 
 export default function QAModal({
   open,
@@ -15,6 +24,8 @@ export default function QAModal({
   setOpen: any;
   example: any;
 }) {
+  const formReference = useRef<HTMLFormElement>();
+
   if (!example) {
     // create a dummy so the completion doesn't croak during init.
     example = new Object();
@@ -75,8 +86,9 @@ export default function QAModal({
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-gray-800 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:p-6 w-full max-w-3xl">
+                <AudioRecorder setDialog={setInput} formReference={formReference} />
                 <div>
-                  <form onSubmit={handleSubmit}>
+                  <form ref={formReference} onSubmit={handleSubmit}>
                     <input
                       placeholder="How's your day?"
                       className={
