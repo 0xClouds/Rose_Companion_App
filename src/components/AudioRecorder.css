@@ -1,0 +1,30 @@
+.microphone-on {
+  height: 12.5px;
+  width: 12.5px;
+  background-color: #00ff00;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.microphone-off {
+  height: 12.5px;
+  width: 12.5px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.microphone {
+  height: 12.5px;
+  width: 12.5px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.on {
+  background-color: #00ff00;
+}
+
+.off {
+  background-color: #ff0000;
+}

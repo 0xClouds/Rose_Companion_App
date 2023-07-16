@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import textToSpeech from "../app/utils/textToSpeech";
 import { debounce } from "lodash";
+
 interface AudioPlayerProps {
   inputText: string;
 }
@@ -39,7 +40,9 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ inputText }) => {
       // Create a new Blob object from the audio data with MIME type 'audio/mpeg'
       const blob = new Blob([data], { type: "audio/mpeg" });
       // Create a URL for the blob object
-      console.log("Im in here");
+      console.log();
+      console.log("=== Im in here ===");
+      console.log();
       // if (audioURL) {
       //   console.log("Im revoking");
       //   URL.revokeObjectURL(audioURL);
