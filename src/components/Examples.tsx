@@ -38,9 +38,7 @@ export default function Examples() {
           phone: entry.phone,
         }));
         setExamples(setme);
-      } catch (err) {
-        console.log(err);
-      }
+      } 
     };
 
     fetchData();

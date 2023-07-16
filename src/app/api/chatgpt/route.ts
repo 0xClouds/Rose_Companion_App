@@ -10,7 +10,7 @@ import { currentUser } from "@clerk/nextjs";
 import MemoryManager from "@/app/utils/memory";
 import { rateLimit } from "@/app/utils/rateLimit";
 
-dotenv.config({ path: `.env` });
+dotenv.config({ path: `.env.local` });
 
 export async function POST(req: Request) {
   let clerkUserId;
