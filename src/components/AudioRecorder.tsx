@@ -51,7 +51,7 @@ export interface AudioRecorderProps {
 import { useWhisper } from '@chengsokdara/use-whisper'
 
 function AudioRecorder({appState, setDialog, formReference}: AudioRecorderProps) {
-  const {
+  let {
     recording,
     speaking,
     transcript,
@@ -64,16 +64,44 @@ function AudioRecorder({appState, setDialog, formReference}: AudioRecorderProps)
     autoStart: true,
   });
 
+  function submit() {
+    if(transcript.text)
+        setDialog(transcript.text);
+
+    if (formReference.current)  
+      formReference.current.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+
+    stopRecording();
+    transcript = { 
+      blob: undefined,
+      text: undefined 
+    };
+  };
+
   return (
-    <div>
-      <p>Recording: {recording}</p>
-      <p>Speaking: {speaking}</p>
-      <p>Transcribed Text: { transcript ? transcript.text : "" }</p>
-      <button onClick={() => startRecording()}>Start</button>
-      <button onClick={() => pauseRecording()}>Pause</button>
-      <button onClick={() => stopRecording()}>Stop</button>
+    <div className="container">
+      { recording ?  
+          <span className="microphone-on" /> :
+          <span className="microphone-off" /> 
+      }
+      <button className="button" onClick={submit}>Submit</button>
+      <button onClick={startRecording}>Start</button>
+      <p>{transcript.text}</p>
     </div>
   );
+
+
+  // return (
+  //   <div>
+  //     <p>Recording: {recording ? "true" : "false" }</p>
+  //     <p>Speaking: {speaking ? "true" : "false" }</p>
+  //     <p>Transcribing: { transcribing ? "true" : "false" }</p>
+  //     <p>Transcribed Text: { transcript ? transcript.text : "" }</p>
+  //     <button onClick={startRecording}>Start</button>
+  //     <button onClick={pauseRecording}>Pause</button>
+  //     <button onClick={stopRecording}>Stop</button>
+  //   </div>
+  // );
 }
 
 export default AudioRecorder;
